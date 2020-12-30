@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { Button, FormControl, IconButton, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -16,9 +17,10 @@ function Setting(props) {
     const [lang, setLang] = useState('javascript');
     const [theme, setTheme] = useState('monokai');
     const [font, setFont] = useState(20);
-    const { handleFontSetting, handleLangSetting, handleThemeSetting } = props;
+    const { handleFontSetting, handleLangSetting, handleThemeSetting, saveOffline, handleOpen } = props;
+
     return (
-        <div style={{ justifyContent: "space-around", display: "flex", backgroundColor:'#f2d8d5' }}>
+        <div style={{ justifyContent: "space-around", display: "flex", backgroundColor: '#f2d8d5' }}>
             <FormControl variant="filled" className={classes.formControl}>
                 <InputLabel id="lang-label">Langauge</InputLabel>
                 <Select
@@ -60,6 +62,10 @@ function Setting(props) {
                     <MenuItem value={35}>35</MenuItem>
                 </Select>
             </FormControl>
+            <Button onClick={() => handleOpen()}>Participants</Button>
+            <IconButton onClick={() => saveOffline()}>
+                <SaveAltIcon />
+            </IconButton>
         </div>
 
     )
